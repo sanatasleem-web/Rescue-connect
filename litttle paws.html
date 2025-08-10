@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save Disabled Dogs - Nonprofit Fundraiser</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+  background: linear-gradient(to right, rgba(0, 0, 50, 0.8), rgba(33, 0, 71, 0.8), rgba(0, 153, 86, 0.8));
+  color: white;
+  font-family: 'Arial', sans-serif;
+  transition: background 0.3s ease;
+}
+
+.navbar {
+  margin-bottom: 20px;
+  background-color: #6a5acd; 
+  transition: background-color 0.4s ease, box-shadow 0.3s ease;
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: translateX(10px); 
+  color: #00b894; 
+}
+
+.nav-link {
+  color: #fff !important;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 15px 20px;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  overflow: hidden;
+  transition: color 0.3s ease, padding 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  height: 3px;
+  background-color: #6a5acd;
+  transition: left 0.3s ease, width 0.3s ease;
+  transform: translateX(-50%);
+  transform-origin: bottom right;
+}
+
+.nav-link:hover {
+  color: #00b894 !important;
+  padding-bottom: 20px;
+  transform: scale(1.1); 
+}
+
+.nav-link:hover::after {
+  width: 0;
+  left: 50%;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: rgba(255, 99, 71, 0.2);
+  border-radius: 5px;
+}
+
+.navbar-nav .nav-link {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  cursor: pointer;
+  transform: translateY(-3px); 
+}
+
+.navbar-nav .nav-link:focus {
+  outline: none;
+}
+
+.navbar.navbar-scrolled {
+  background-color: #1a252f !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-scrolled {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.impact-story {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impact-story:hover {
+  transform: translateY(-10px); 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.impact-story img {
+  width: 100%;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.impact-story:hover img {
+  transform: scale(1.1); 
+}
+.list-group-item{
+    color:black;
+    font-weight: bold;
+}
+
+
+.btn-custom {
+  background-color: #4C51BF;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #2c3e50;
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.donation-progress-bar .progress-bar {
+  transition: width 0.5s ease-in-out;
+}
+
+
+.payment-methods img {
+  max-width: 100px;
+  margin: 10px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.payment-methods img:hover {
+  transform: scale(1.1); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.qr-code {
+  max-width: 150px;
+  margin: 15px;
+  transition: transform 0.3s ease;
+}
+
+.qr-code:hover {
+  transform: scale(1.1);
+}
+
+
+.social-icons img {
+  width: 40px;
+  margin: 0 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2); 
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.head1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.head1:hover {
+  color: #00b894; 
+  transform: translateY(-5px); 
+}
+
+
+.section {
+  display: none;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+#homeSection {
+  display: block;
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.card {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+}
+
+@media (max-width: 768px) {
+  .carousel img {
+    height: 300px;
+  }
+
+  .social-icons img {
+    width: 35px; 
+  }
+
+  .impact-story img {
+    border-radius: 10px; 
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Save Disabled Dogs</a>
+    <div class="navbar-nav ml-auto">
+      <a class="nav-link" href="#" onclick="showSection('homeSection')">Home</a>
+      <a class="nav-link" href="#" onclick="showSection('signUpSection')">Sign Up</a>
+      
+      <a class="nav-link" href="#" onclick="showSection('impactStoriesSection')">Impact Stories</a>
+      <a class="nav-link" href="#" onclick="showSection('howHelpSection')">How You Can Help</a>
+      <a class="nav-link" href="#" onclick="showSection('donateSection')">Donate</a>
+   
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div id="homeSection" class="section">
+      <h1 class="text-center">Save Disabled Dogs</h1>
+      <p class="text-center">Help us provide care and shelter for dogs with disabilities. They deserve a second chance
+        at life!</p>
+      <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://i.redd.it/6ynt8kgjdxe01.jpg" class="d-block w-100 h-100"
+              alt="Disabled Dog 1">
+          </div>
+          <div class="carousel-item">
+            <img src="https://st3.depositphotos.com/33674250/36636/i/450/depositphotos_366367468-stock-photo-cute-sleeping-street-dog-puppy.jpg" class="d-block w-100 h-100"
+              alt="Disabled Dog 2">
+          </div>
+          <div class="carousel-item">
+            <img src="https://thumbs.dreamstime.com/b/abandoned-dog-lying-ground-sad-eyes-lonely-street-34656293.jpg" class="d-block w-100 h-100"
+              alt="Disabled Dog 3">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    
+    <div id="donateSection" class="section">
+      <h2>Donate to Save Lives</h2>
+      <p>Your contribution helps us provide life-saving treatment, rehabilitation, and care for disabled dogs.</p>
+      <h1> Donate now to help them complete the target of </h1>
+
+      
+      <div class="progress mb-3 donation-progress-bar">
+        <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0"
+          aria-valuemax="100">
+          45% Funded
+        </div>
+      </div>
+
+      <button class="btn btn-custom btn-lg" onclick="showPaymentOptions()">Donate Now</button>
+
+      
+      <div id="donatepaymentSection" class="section" style="display: none;">
+        <h3 class="mt-4">Payment Options</h3>
+
+       
+        <div class="payment-methods">
+          <div class="payment-option">
+            <h4>QR Code</h4>
+            <img src="https://tse1.mm.bing.net/th?id=OIP.aBG1ngyMfbr6L3dj6gMbbAHaHa&pid=Api&P=0&h=180" alt="QR Code" class="qr-code">
+            <p>Scan the QR code to donate directly to our cause!</p>
+          </div>
+
+          
+          <div class="payment-option">
+            <h4>Credit/Debit Card</h4>
+            <img src="https://tse1.mm.bing.net/th?id=OIP.CK9P44mPPsVjZRi3BNEPBQHaEK&pid=Api&P=0&h=180" alt="MasterCard" class="payment-method-logo">
+            <img src="https://tse2.mm.bing.net/th?id=OIP.LMwzmOS4wFNhM1w_8S4THgHaEK&pid=Api&P=0&h=180" alt="Visa" class="payment-method-logo">
+          </div>
+
+          <div class="payment-option">
+            <h4>PayPal</h4>
+            <img src="https://tse2.mm.bing.net/th?id=OIP.tK9_1s9dclQIDMlPxc5QuwHaHa&pid=Api&P=0&h=180" alt="PayPal" class="payment-method-logo">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showPaymentOptions() {
+        const paymentSection = document.getElementById('donatepaymentSection');
+        paymentSection.style.display = paymentSection.style.display === 'none' ? 'block' : 'none';
+      }
+    </script>
+
+
+   
+    <div id="impactStoriesSection" class="section">
+      <h2>Impact Stories</h2>
+      <div class="card impact-story">
+        <img src="https://i.pinimg.com/originals/59/1d/e6/591de696c26cb56beb8e52654790197b.jpg" class="h-50" alt="Rescued Dog 1">
+        <div class="card-body">
+          <h5 class="card-title">Meet Luna</h5>
+          <p class="card-text">Luna was born with a disability, but after receiving proper care and rehabilitation,
+            she's now a healthy and happy dog. Luna was found shivering under an old shed during a winter storm. She was
+            malnourished, frightened, and had patches of missing fur. After being rescued, Luna received medical care,
+            nourishing food, and, most importantly, the love and patience she needed to trust humans again.
+
+            Over the weeks, Luna's timid nature blossomed into a gentle, playful spirit. She’s now known for her
+            beautiful, expressive eyes that sparkle with gratitude and joy. Luna enjoys belly rubs, running around in
+            the open fields, and playing with her favorite squeaky toy. She was recently adopted by a loving family who
+            dotes on her every day, giving her the safe, warm home she always deserved. Luna’s journey reminds us that
+            every dog deserves a chance, and with your support, we can make stories like hers possible for many more
+            dogs in need.</p>
+        </div>
+      </div>
+      <div class="card impact-story">
+        <img src="https://d.newsweek.com/en/full/2339619/koa-disabled-rescue-dog-was-saved.png" alt="Rescued Dog 2">
+        <div class="card-body">
+          <h5 class="card-title">The Story of Max</h5>
+          <p class="card-text">Max was abandoned, but with our help, he is now thriving in a loving home despite his
+            physical limitations Max was found injured and abandoned, struggling to survive on the streets. After
+            receiving the medical care he desperately needed, Max quickly regained his strength and warmth. Now healthy
+            and full of energy, he loves playing fetch and snuggling up with his new family. Max’s story is a testament
+            to resilience and the transformative power of love and care.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="howHelpSection" class="section">
+      <h2 class="head1">How You Can Help</h2>
+      <p class="head1">There are many ways you can make a difference in the lives of these disabled dogs:</p>
+      <ul class="list-group">
+        <li class="list-group-item">Make a donation</li>
+        <li class="list-group-item">Volunteer your time</li>
+        <li class="list-group-item">Adopt a dog in need</li>
+        <li class="list-group-item">Spread awareness through social media</li>
+        <li class="list-group-item">Teach your children to take care of the animals</li>
+        <li class="list-group-item">You can even create a awareness among your family members as well.</li>
+        <li class="list-group-item">Get connected with the animal care centers</li>
+        <li class="list-group-item">Participate in the social-cause events</li>
+        <li class="list-group-item">Share this donation with your family and friends</li>
+      </ul>
+    </div>
+
+    <div id="signUpSection" class="section">
+  <h2>Sign Up for Updates</h2>
+  <p>Fill in the form below to sign up for updates:</p>
+  <!-- Embed the Google Form using iframe -->
+ <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCdlFiAWWL1pnO5OY5PfSYSoAdW2jbc1fLlMosKBdNYZSYew/viewform?usp=sf_link">GOOGLE FORMS</a>
+<p></p>
+ <P> Address : vasudhaiva kutumbakam organisation
+  kolagal road ,after canal opp HP petrl bunk behind appu dhaba ,Ballari,Karnataka.    
+      PH NO: 9113559784.(Akash)
+ </P>
+</div>
+
+    
+      <div class="social-icons mt-4">
+        <h4>Follow Us</h4>
+        <a href="https://www.linkedin.com" target="_blank"><img src="https://tse1.mm.bing.net/th?id=OIP.waOtRAV99hCXTCS_RvbK6QHaGp&pid=Api&P=0&h=180" alt="LinkedIn"></a>
+        <a href="https://r.search.yahoo.com/_ylt=Awr1UaR2E21nKwIAR0q7HAx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Ny/RV=2/RE=1736411254/RO=10/RU=https%3a%2f%2fwww.instagram.com%2ftheworldisonebigfamily%2f/RK=2/RS=8mwuQ3Xf4kUR7x0a8nCD.R9dUeQ-" target="_blank"><img src="https://tse3.mm.bing.net/th?id=OIP.VHloij6S_ID2JwV7XXZp4wHaHa&pid=Api&P=0&h=180" alt="Instagram"></a>
+        <a href="https://l.instagram.com/?u=https%3A%2F%2Fyoutube.com%2F%40vasudhaivakutumbakam-c5f%3Fsi%3DS4ZAFe3gxfgkjKqs&e=AT3QuCIILvL5GOqcIw9-3h45bO6BUhmIcoPBAVuQIlfe3USp8aaU9xjttdvOSziMNrSLJ-jbsgAFFPW53xz9wTb0qAukf-_n" target="_blank"><img src="https://tse1.mm.bing.net/th?id=OIP.ERa0tANw3jfh4ucO7sLUIQHaFR&pid=Api&P=0&h=180" alt="YouTube"></a>
+      </div>
+    </div>
+
+  </div>
+  
+
+
+
+  <script>
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => section.style.display = 'none');
+      document.getElementById(sectionId).style.display = 'block';
+    }
+  </script>
+
+  <!-- jQuery and Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
